@@ -1,6 +1,8 @@
 public class MyFarm {
 
     public Plot[][] grid;
+    //arraylists: double bracket [][]
+    grid = new Plot[4][3]; //4 rows, 3 columns
 
     public static void main(String[] args) {
         MyFarm garden = new MyFarm();
@@ -9,6 +11,11 @@ public class MyFarm {
     public MyFarm() {
 
         // declare a 2D grid of plots
+        for(int row = 0; row<grid.length;row++){
+            for(int column = 0; column<grid.length;column++){
+
+            }
+        }
 
         // construct a 2D grid of plots
 
@@ -16,6 +23,14 @@ public class MyFarm {
         // methods to write together during class
         totalPlants();
         totalCarrots();
+        averageNumberOfPlants();
+        numberOfTomatoPlots();
+        numberOfEmptyPlots();
+        everyOtherNeedsWater();
+        plantWithMaxNumber();
+        plantWithMinNumber();
+        greaterThan50();
+        plantWithMaxNumberNeedsWater();
 
         /***
          * for each additional method you code, call it here
@@ -26,16 +41,39 @@ public class MyFarm {
 
     public void totalPlants() {
         // how many plants are there in total across all plots?
+        int total = 0;
+        for (int row = 0; row<grid.length;row++){
+            for(int column = 0; column<grid.length;column++){
+                total += grid[row][column].numberOfPlants;
+            }
+        }
+        System.out.println("Total plants: " + total);
     }
 
     public void totalCarrots() {
         // how many total carrots are there across all plots?
-
+        int total = 0;
+        for (int row = 0; row<grid.length;row++){
+            for(int column = 0; column<grid.length;column++){
+                if(grid[row][column].plantName.equals("carrot")){
+                    total += grid[row][column].numberOfPlants;
+                }
+            }
+        }
+        System.out.println("Total carrots: " + total);
     }
 
     public void averageNumberOfPlants() {
         // what is the average number of plants across the whole row?
-
+        int total = 0;
+        int amount = 0;
+        for (int row = 0; row<grid.length;row++) {
+            for (int column = 0; column < grid.length; column++) {
+                total += grid[row][column].numberOfPlants;
+                amount++
+            }
+        }
+        System.out.println("Average number of plants: " + total/amount);
     }
 
     public void numberOfTomatoPlots() {
